@@ -1,11 +1,14 @@
-import { registerPlugin } from '@capacitor/core';
+/* eslint-disable @typescript-eslint/no-namespace */
+import { MapType, Marker, LatLng, CameraConfig } from './definitions';
+import { CreateMapArgs } from './implementation';
+import { GoogleMap } from './map';
 
-import type { CapacitorCustomGoogleMapsPlugin } from './definitions';
+export { GoogleMap, MapType, Marker, LatLng, CameraConfig, CreateMapArgs };
 
-const CapacitorCustomGoogleMaps =
-  registerPlugin<CapacitorCustomGoogleMapsPlugin>('CapacitorCustomGoogleMaps', {
-    web: () => import('./web').then(m => new m.CapacitorCustomGoogleMapsWeb()),
-  });
-
-export * from './definitions';
-export { CapacitorCustomGoogleMaps };
+declare global {
+  export namespace JSX {
+    export interface IntrinsicElements {
+      'capacitor-google-map': any;
+    }
+  }
+}
