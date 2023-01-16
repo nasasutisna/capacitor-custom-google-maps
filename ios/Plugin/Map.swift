@@ -66,9 +66,9 @@ public class Map {
     var markerIcons = [String: UIImage]()
 
     // swiftlint:disable weak_delegate
-    private var delegate: CapacitorGoogleMapsPlugin
+    private var delegate: CapacitorCustomGoogleMapsPlugin
 
-    init(id: String, config: GoogleMapConfig, delegate: CapacitorGoogleMapsPlugin) {
+    init(id: String, config: GoogleMapConfig, delegate: CapacitorCustomGoogleMapsPlugin) {
         self.id = id
         self.config = config
         self.delegate = delegate

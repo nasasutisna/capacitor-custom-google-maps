@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.dependency 'GoogleMaps', '~> 6.0.0'
   s.dependency 'Google-Maps-iOS-Utils', '~> 4.1.0'
   s.swift_version = '5.1'
+  s.static_framework = true
 end

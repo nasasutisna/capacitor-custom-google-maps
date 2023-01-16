@@ -149,7 +149,7 @@ public class CapacitorCustomGoogleMapsPlugin: CAPPlugin, GMSMapViewDelegate {
                 throw GoogleMapErrors.mapNotFound
             }
 
-            let markerId = try map.addMarker(marker: <#T##Marker#>)
+            let markerId = try map.addMarker(marker: marker)
 
             call.resolve(["id": String(markerId)])
 
@@ -185,7 +185,7 @@ public class CapacitorCustomGoogleMapsPlugin: CAPPlugin, GMSMapViewDelegate {
                 circle.fillColor = UIColor(red:0, green: 0.5, blue: 0, alpha: 0.3)
                 circle.strokeColor = UIColor(red:0, green: 0.5, blue: 0, alpha: 0.5)
                 circle.strokeWidth = 2
-                circle.map = self.mapViewController.GMapView
+                circle.map = map.mapViewController.GMapView
                 call.resolve()
             }
 
