@@ -17,7 +17,7 @@ extension GMSMapViewType {
         case "None":
             return .none
         default:
-            print("CapacitorGoogleMaps Warning: unknown mapView type '\(mapType)'.  Defaulting to normal.")
+            print("CapacitorCustomGoogleMaps Warning: unknown mapView type '\(mapType)'.  Defaulting to normal.")
             return .normal
         }
     }

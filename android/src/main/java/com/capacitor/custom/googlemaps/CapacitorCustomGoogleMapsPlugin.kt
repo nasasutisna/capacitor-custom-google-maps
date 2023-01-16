@@ -23,11 +23,11 @@ import org.json.JSONObject;
                 [
                         Permission(
                                 strings = [Manifest.permission.ACCESS_FINE_LOCATION],
-                                alias = CapacitorGoogleMapsPlugin.LOCATION
+                                alias = CapacitorCustomGoogleMapsPlugin.LOCATION
                         ),
                 ],
 )
-class CapacitorGoogleMapsPlugin : Plugin() {
+class CapacitorCustomGoogleMapsPlugin : Plugin() {
     private var maps: HashMap<String, CapacitorGoogleMap> = HashMap()
     private var cachedTouchEvents: HashMap<String, MutableList<MotionEvent>> = HashMap()
     private val tag: String = "CAP-GOOGLE-MAPS"

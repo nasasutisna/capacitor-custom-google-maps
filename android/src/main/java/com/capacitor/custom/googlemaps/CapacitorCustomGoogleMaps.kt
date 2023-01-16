@@ -34,7 +34,7 @@ import java.net.URL
 class CapacitorGoogleMap(
     val id: String,
     val config: GoogleMapConfig,
-    val delegate: CapacitorGoogleMapsPlugin
+    val delegate: CapacitorCustomGoogleMapsPlugin
 ) :
         OnCameraIdleListener,
         OnCameraMoveStartedListener,
@@ -415,7 +415,7 @@ class CapacitorGoogleMap(
                             "None" -> MAP_TYPE_NONE
                             else -> {
                                 Log.w(
-                                        "CapacitorGoogleMaps",
+                                        "CapacitorCustomGoogleMaps",
                                         "unknown mapView type '$mapType'  Defaulting to normal."
                                 )
                                 MAP_TYPE_NORMAL
@@ -567,7 +567,7 @@ class CapacitorGoogleMap(
                     }
 
                     Log.w(
-                            "CapacitorGoogleMaps",
+                            "CapacitorCustomGoogleMaps",
                             "Could not load image '${marker.iconUrl}': ${detailedMessage}. Using default marker icon."
                     )
                 }

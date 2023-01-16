@@ -408,7 +408,7 @@ public class Map {
                         detailedMessage = "SVG not supported."
                     }
 
-                    print("CapacitorGoogleMaps Warning: could not load image '\(iconUrl)'. \(detailedMessage)  Using default marker icon.")
+                    print("CapacitorCustomGoogleMaps Warning: could not load image '\(iconUrl)'. \(detailedMessage)  Using default marker icon.")
                 }
             }
         } else {
