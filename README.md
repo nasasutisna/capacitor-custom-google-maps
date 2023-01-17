@@ -541,3 +541,4 @@ An interface representing the viewports latitude and longitude bounds.
 | **`None`**      | <code>'None'</code>      | No base map tiles.                       |
 
 </docgen-api>
+# capacitor-custom-google-maps
