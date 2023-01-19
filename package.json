@@ -1,6 +1,6 @@
 {
   "name": "capacitor-custom-google-maps",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "capacitor custom plugin google maps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -63,7 +63,7 @@
     "typescript": "~4.1.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "4.0.1"
+    "@capacitor/core": "4.2.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
