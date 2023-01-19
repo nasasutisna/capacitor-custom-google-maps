@@ -302,8 +302,8 @@ export interface MyLocationButtonClickCallbackData {
  * An interface representing the viewports latitude and longitude bounds.
  */
 export interface CircleOptions {
-  radius: string;
-  mapId: string;
+  radius: number;
+  mapId?: string;
   center: LatLng;
   fillColor: string;
   strokeColor: string;

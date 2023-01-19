@@ -108,8 +108,8 @@ export interface OnScrollArgs {
 }
 
 export interface CircleOptions {
-  radius: string;
-  mapId: string;
+  radius: number;
+  mapId?: string;
   center: LatLng;
   fillColor: string;
   strokeColor: string;

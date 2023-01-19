@@ -1,6 +1,6 @@
 {
   "name": "capacitor-custom-google-maps",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "description": "capacitor custom plugin google maps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -44,26 +44,26 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^4.0.1",
-    "@capacitor/core": "^4.0.1",
+    "@capacitor/android": "4.2.0",
+    "@capacitor/core": "4.2.0",
     "@capacitor/docgen": "0.2.0",
-    "@capacitor/ios": "^4.0.1",
-    "@ionic/eslint-config": "^0.3.0",
-    "@ionic/prettier-config": "^1.0.1",
-    "@ionic/swiftlint-config": "^1.1.2",
-    "@types/supercluster": "^7.1.0",
-    "downlevel-dts": "^0.7.0",
-    "eslint": "^7.11.0",
-    "eslint-plugin-import": "^2.25.4",
+    "@capacitor/ios": "4.2.0",
+    "@ionic/eslint-config": "0.3.0",
+    "@ionic/prettier-config": "1.0.1",
+    "@ionic/swiftlint-config": "1.1.2",
+    "@types/supercluster": "7.1.0",
+    "downlevel-dts": "0.7.0",
+    "eslint": "7.11.0",
+    "eslint-plugin-import": "2.25.4",
     "prettier": "~2.3.0",
     "prettier-plugin-java": "~1.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.32.0",
-    "swiftlint": "^1.0.1",
+    "rimraf": "3.0.2",
+    "rollup": "2.32.0",
+    "swiftlint": "1.0.1",
     "typescript": "~4.1.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "^4.0.1"
+    "@capacitor/core": "4.0.1"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
@@ -82,9 +82,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.13.7",
-    "@googlemaps/markerclusterer": "^2.0.7",
-    "@types/google.maps": "^3.50.5",
-    "capacitor-custom-google-maps": "^0.0.3"
+    "@googlemaps/js-api-loader": "1.13.7",
+    "@googlemaps/markerclusterer": "2.0.7",
+    "@types/google.maps": "3.50.5"
   }
 }

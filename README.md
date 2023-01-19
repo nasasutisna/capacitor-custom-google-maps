@@ -344,7 +344,7 @@ An interface representing the viewports latitude and longitude bounds.
 
 | Prop              | Type                                      |
 | ----------------- | ----------------------------------------- |
-| **`radius`**      | <code>string</code>                       |
+| **`radius`**      | <code>number</code>                       |
 | **`mapId`**       | <code>string</code>                       |
 | **`center`**      | <code><a href="#latlng">LatLng</a></code> |
 | **`fillColor`**   | <code>string</code>                       |

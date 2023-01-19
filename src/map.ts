@@ -256,6 +256,16 @@ export class GoogleMap {
   }
 
   /**
+   * Adds circle
+   * @param options
+   * @returns void
+   */
+    async addCircle(options: CircleOptions): Promise<void> {
+      const res = await CapacitorCustomGoogleMaps.addCircle(options);
+      return res;
+    }
+
+  /**
    * Remove marker from the map
    *
    * @param id id of the marker to remove from the map
