@@ -6,7 +6,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import com.capacitor.custom.plugins.googlemaps.*
+// import com.capacitor.custom.plugins.googlemaps.*
 import com.getcapacitor.*;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import com.getcapacitor.annotation.Permission;
