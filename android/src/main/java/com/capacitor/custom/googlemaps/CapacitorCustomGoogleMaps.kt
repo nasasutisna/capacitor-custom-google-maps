@@ -402,6 +402,24 @@ class CapacitorGoogleMap(
         }
     }
 
+    fun addCircle(config: GoogleMapCircleConfig, callback: (error: GoogleMapsError?) -> Unit) {
+        try {
+            googleMap ?: throw GoogleMapNotAvailable()
+            CoroutineScope(Dispatchers.Main).launch {
+                val circleOptions = CircleOptions()
+                    .center(config.coordinate)
+                    .radius(config.radius)
+                    .strokeColor(Color.GREEN)
+                    .fillColor(Color.GREEN)
+
+                googleMap?.addCircle(circleOptions)
+                callback(null)
+            }
+        } catch (e: GoogleMapsError) {
+            callback(e)
+        }
+    }
+
     fun setMapType(mapType: String, callback: (error: GoogleMapsError?) -> Unit) {
         try {
             googleMap ?: throw GoogleMapNotAvailable()

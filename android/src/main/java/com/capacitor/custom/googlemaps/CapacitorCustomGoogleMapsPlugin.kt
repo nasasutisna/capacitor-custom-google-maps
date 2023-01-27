@@ -373,6 +373,37 @@ class CapacitorCustomGoogleMapsPlugin : Plugin() {
     }
 
     @PluginMethod
+    fun addCircle(call: PluginCall) {
+        try {
+            val id = call.getString("mapId")
+            id ?: throw InvalidMapIdError()
+
+            val map = maps[id]
+            map ?: throw MapNotFoundError()
+
+            val circleConfigObject =
+                    call.getObject("center")
+                            ?: throw InvalidArgumentsError("center is missing");
+            val radius =   call.getDouble("radius")
+                ?: throw InvalidArgumentsError("radius is required")
+
+            val config = GoogleMapCircleConfig(circleConfigObject,radius)
+
+            map.addCircle(config) { err ->
+                if (err != null) {
+                    throw err
+                }
+
+                call.resolve()
+            }
+        } catch (e: GoogleMapsError) {
+            handleError(call, e)
+        } catch (e: Exception) {
+            handleError(call, e)
+        }
+    }
+
+    @PluginMethod
     fun setMapType(call: PluginCall) {
         try {
             val id = call.getString("id")
