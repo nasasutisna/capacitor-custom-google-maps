@@ -386,8 +386,17 @@ class CapacitorCustomGoogleMapsPlugin : Plugin() {
                             ?: throw InvalidArgumentsError("center is missing");
             val radius =   call.getDouble("radius")
                 ?: throw InvalidArgumentsError("radius is required")
+            
+            val fillColor =   call.getString("fillColor")
+                ?: throw InvalidArgumentsError("fillColor is required")
 
-            val config = GoogleMapCircleConfig(circleConfigObject,radius)
+            val strokeColor =   call.getString("strokeColor")
+                ?: throw InvalidArgumentsError("strokeColor is required")
+            
+            val strokeWidth =   call.getInt("strokeWidth")
+                ?: throw InvalidArgumentsError("strokeWidth is required")
+
+            val config = GoogleMapCircleConfig(circleConfigObject, radius, strokeColor, fillColor, strokeWidth)
 
             map.addCircle(config) { err ->
                 if (err != null) {

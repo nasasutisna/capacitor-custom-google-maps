@@ -409,8 +409,9 @@ class CapacitorGoogleMap(
                 val circleOptions = CircleOptions()
                     .center(config.coordinate)
                     .radius(config.radius)
-                    .strokeColor(Color.GREEN)
-                    .fillColor(Color.GREEN)
+                    .strokeColor(Color.parseColor(config.strokeColor))
+                    .fillColor(Color.parseColor(config.fillColor))
+                    .strokeWidth(config.strokeWidth.toFloat())
 
                 googleMap?.addCircle(circleOptions)
                 callback(null)
