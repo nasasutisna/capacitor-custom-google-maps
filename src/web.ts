@@ -27,12 +27,8 @@ import type {
 
 export class CapacitorCustomGoogleMapsWeb
   extends WebPlugin
-  implements CapacitorCustomGoogleMapsPlugin
-{
-  addCircle(args: CircleOptions): Promise<void> {
-    console.log(args);
-    throw new Error('Method not implemented.');
-  }
+  implements CapacitorCustomGoogleMapsPlugin {
+
   private gMapsRef: typeof google.maps | undefined = undefined;
   private maps: {
     [id: string]: {
@@ -243,6 +239,24 @@ export class CapacitorCustomGoogleMapsWeb
     this.currMarkerId++;
 
     return { id: id };
+  }
+
+  async addCircle(args: CircleOptions): Promise<void> {
+    // // create a map object
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const map = this.maps[args.mapId].map;
+
+    // create a circle object
+    new google.maps.Circle({
+      strokeColor: args.strokeColor,
+      strokeOpacity: 0.8,
+      strokeWeight: args.strokeWidth,
+      fillColor: args.fillColor,
+      fillOpacity: 0.35,
+      map: map,
+      center: args.center,
+      radius: args.radius // 10 km
+    });
   }
 
   async removeMarkers(_args: RemoveMarkersArgs): Promise<void> {

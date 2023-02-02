@@ -303,7 +303,7 @@ export interface MyLocationButtonClickCallbackData {
  */
 export interface CircleOptions {
   radius: number;
-  mapId?: string;
+  mapId: string;
   center: LatLng;
   fillColor: string;
   strokeColor: string;
