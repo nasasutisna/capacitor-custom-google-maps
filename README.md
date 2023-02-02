@@ -1,7 +1,7 @@
 # capacitor-custom-google-maps
 
 capacitor custom plugin google maps 
-- add function for create circle on the maps (support for android & ios)
+- add function for create circle on the maps (support for web, android and ios)
 
 ## Install
 
