@@ -5,7 +5,7 @@ import GoogleMapsUtils
 import UIKit
 
 extension UIColor {
-    convenience init(hex: String) {
+    convenience init(hex: String, alpha: CGFloat) {
         let scanner = Scanner(string: hex)
         scanner.scanLocation = 0
         
@@ -20,7 +20,8 @@ extension UIColor {
         self.init(
             red: CGFloat(r) / 0xff,
             green: CGFloat(g) / 0xff,
-            blue: CGFloat(b) / 0xff, alpha: 1
+            blue: CGFloat(b) / 0xff, 
+            alpha: alpha
         )
     }
 }
@@ -206,8 +207,8 @@ public class CapacitorCustomGoogleMapsPlugin: CAPPlugin, GMSMapViewDelegate {
             DispatchQueue.main.async {
                 let circleCenter = coordinates
                 let circle = GMSCircle(position: circleCenter, radius: radius)
-                circle.fillColor = UIColor(hex: fillColor.replacingOccurrences(of: "#", with: ""))
-                circle.strokeColor = UIColor(hex: strokeColor.replacingOccurrences(of: "#", with: ""))
+                circle.fillColor = UIColor(hex: fillColor.replacingOccurrences(of: "#", with: ""), alpha: 0.8)
+                circle.strokeColor = UIColor(hex: strokeColor.replacingOccurrences(of: "#", with: ""),alpha: 0.8)
                 circle.strokeWidth = strokeWidthCGFloat
                 circle.map = map.mapViewController.GMapView
                 call.resolve()

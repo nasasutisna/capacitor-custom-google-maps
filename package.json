@@ -1,6 +1,6 @@
 {
   "name": "capacitor-custom-google-maps",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "capacitor custom plugin google maps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
