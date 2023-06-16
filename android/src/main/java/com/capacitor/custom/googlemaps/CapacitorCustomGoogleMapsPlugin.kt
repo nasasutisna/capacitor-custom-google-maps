@@ -499,6 +499,15 @@ class CapacitorCustomGoogleMapsPlugin : Plugin() {
         }
     }
 
+    @PluginMethod
+    fun setMyLocationButtonEnabled(call: PluginCall) {
+        if (getPermissionState(LOCATION) != PermissionState.GRANTED) {
+            requestAllPermissions(call, "enableCurrentLocationCallback")
+        } else {
+            internalEnableButtonCurrentLocation(call)
+        }
+    }
+
     @PermissionCallback
     fun enableCurrentLocationCallback(call: PluginCall) {
         if (getPermissionState(LOCATION) == PermissionState.GRANTED) {
@@ -620,6 +629,31 @@ class CapacitorCustomGoogleMapsPlugin : Plugin() {
         }
     }
 
+    private fun internalEnableButtonCurrentLocation(call: PluginCall) {
+        try {
+            val id = call.getString("id")
+            id ?: throw InvalidMapIdError()
+
+            val map = maps[id]
+            map ?: throw MapNotFoundError()
+
+            val enabled =
+                    call.getBoolean("enabled") ?: throw InvalidArgumentsError("enabled is missing")
+
+            map.setMyLocationButtonEnabled(enabled) { err ->
+                if (err != null) {
+                    throw err
+                }
+
+                call.resolve()
+            }
+        } catch (e: GoogleMapsError) {
+            handleError(call, e)
+        } catch (e: Exception) {
+            handleError(call, e)
+        }
+    }
+    
     private fun internalEnableCurrentLocation(call: PluginCall) {
         try {
             val id = call.getString("id")

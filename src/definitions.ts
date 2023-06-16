@@ -309,3 +309,15 @@ export interface CircleOptions {
   strokeColor: string;
   strokeWidth: number;
 }
+
+export interface RemoveMarkersArgs {
+  id: string;
+  markerIds: string[];
+}
+
+
+export interface RemoveMarkerArgs {
+  id: string;
+  markerId: string;
+}
+

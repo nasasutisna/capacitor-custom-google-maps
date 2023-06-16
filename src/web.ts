@@ -29,6 +29,10 @@ export class CapacitorCustomGoogleMapsWeb
   extends WebPlugin
   implements CapacitorCustomGoogleMapsPlugin {
 
+  setMyLocationButtonEnabled(args: CurrentLocArgs): Promise<void> {
+    throw new Error(`Method not implemented. ${args}` );
+  }
+
   private gMapsRef: typeof google.maps | undefined = undefined;
   private maps: {
     [id: string]: {
@@ -172,6 +176,8 @@ export class CapacitorCustomGoogleMapsWeb
       }
     }
   }
+
+
   async setPadding(_args: PaddingArgs): Promise<void> {
     const bounds = this.maps[_args.id].map.getBounds();
 

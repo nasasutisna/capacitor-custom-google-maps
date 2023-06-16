@@ -16,6 +16,8 @@ import type {
   MyLocationButtonClickCallbackData,
   LatLngBounds,
   CircleOptions,
+  RemoveMarkersArgs,
+  RemoveMarkerArgs,
 } from './definitions';
 import type { CreateMapArgs, } from './implementation';
 import { CapacitorCustomGoogleMaps } from './implementation';
@@ -30,8 +32,8 @@ export interface GoogleMapInterface {
   addCircle(options: CircleOptions): Promise<void>;
   addMarker(marker: Marker): Promise<string>;
   addMarkers(markers: Marker[]): Promise<string[]>;
-  removeMarker(id: string): Promise<void>;
-  removeMarkers(ids: string[]): Promise<void>;
+  removeMarker(args: RemoveMarkerArgs): Promise<void>;
+  removeMarkers(args: RemoveMarkersArgs): Promise<void>;
   destroy(): Promise<void>;
   setCamera(config: CameraConfig): Promise<void>;
   setMapType(mapType: MapType): Promise<void>;
@@ -39,6 +41,7 @@ export interface GoogleMapInterface {
   enableTrafficLayer(enabled: boolean): Promise<void>;
   enableAccessibilityElements(enabled: boolean): Promise<void>;
   enableCurrentLocation(enabled: boolean): Promise<void>;
+  setMyLocationButtonEnabled(enabled: boolean): Promise<void>; // android only
   setPadding(padding: MapPadding): Promise<void>;
   setOnBoundsChangedListener(
     callback?: MapListenerCallback<CameraIdleCallbackData>,
@@ -381,6 +384,19 @@ export class GoogleMap {
    */
   async enableCurrentLocation(enabled: boolean): Promise<void> {
     return CapacitorCustomGoogleMaps.enableCurrentLocation({
+      id: this.id,
+      enabled,
+    });
+  }
+
+  /**
+   * Set whether the My Button Location dot and accuracy circle is enabled.
+   *
+   * @param enabled
+   * @returns
+   */
+  async setMyLocationButtonEnabled(enabled: boolean): Promise<void> {
+    return CapacitorCustomGoogleMaps.setMyLocationButtonEnabled({
       id: this.id,
       enabled,
     });

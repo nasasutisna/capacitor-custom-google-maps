@@ -486,6 +486,19 @@ class CapacitorGoogleMap(
         }
     }
 
+    @SuppressLint("MissingPermission")
+    fun setMyLocationButtonEnabled(enabled: Boolean, callback: (error: GoogleMapsError?) -> Unit) {
+        try {
+            googleMap ?: throw GoogleMapNotAvailable()
+            CoroutineScope(Dispatchers.Main).launch {
+                googleMap?.uiSettings?.isMyLocationButtonEnabled = enabled
+                callback(null)
+            }
+        } catch (e: GoogleMapsError) {
+            callback(e)
+        }
+    }
+
     fun setPadding(padding: GoogleMapPadding, callback: (error: GoogleMapsError?) -> Unit) {
         try {
             googleMap ?: throw GoogleMapNotAvailable()

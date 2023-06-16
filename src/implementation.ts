@@ -132,6 +132,7 @@ export interface CapacitorCustomGoogleMapsPlugin extends Plugin {
   enableTrafficLayer(args: TrafficLayerArgs): Promise<void>;
   enableAccessibilityElements(args: AccElementsArgs): Promise<void>;
   enableCurrentLocation(args: CurrentLocArgs): Promise<void>;
+  setMyLocationButtonEnabled(args: CurrentLocArgs): Promise<void>;
   setPadding(args: PaddingArgs): Promise<void>;
   onScroll(args: OnScrollArgs): Promise<void>;
   dispatchMapEvent(args: { id: string; focus: boolean }): Promise<void>;

@@ -29,6 +29,7 @@ npx cap sync
 * [`enableTrafficLayer(...)`](#enabletrafficlayer)
 * [`enableAccessibilityElements(...)`](#enableaccessibilityelements)
 * [`enableCurrentLocation(...)`](#enablecurrentlocation)
+* [`setMyLocationButtonEnabled(...)`](#setmylocationbuttonenabled)
 * [`setPadding(...)`](#setpadding)
 * [`onScroll(...)`](#onscroll)
 * [`dispatchMapEvent(...)`](#dispatchmapevent)
@@ -231,6 +232,19 @@ enableAccessibilityElements(args: AccElementsArgs) => Promise<void>
 
 ```typescript
 enableCurrentLocation(args: CurrentLocArgs) => Promise<void>
+```
+
+| Param      | Type                                                      |
+| ---------- | --------------------------------------------------------- |
+| **`args`** | <code><a href="#currentlocargs">CurrentLocArgs</a></code> |
+
+--------------------
+
+
+### setMyLocationButtonEnabled(...)
+
+```typescript
+setMyLocationButtonEnabled(args: CurrentLocArgs) => Promise<void>
 ```
 
 | Param      | Type                                                      |
