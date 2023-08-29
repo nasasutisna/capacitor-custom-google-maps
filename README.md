@@ -2,6 +2,7 @@
 
 capacitor custom plugin google maps 
 - add function for create circle on the maps (support for web, android and ios)
+- support hide my location button if the my location is true
 
 ## Install
 
