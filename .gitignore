@@ -4,7 +4,7 @@ node_modules
 
 # iOS files
 Pods
-Podfile.lock
+output
 Build
 xcuserdata
 
