@@ -30,7 +30,7 @@ export class CapacitorCustomGoogleMapsWeb
   implements CapacitorCustomGoogleMapsPlugin {
 
   setMyLocationButtonEnabled(args: CurrentLocArgs): Promise<void> {
-    throw new Error(`Method not implemented. ${args}` );
+    throw new Error(`Method not implemented. ${args}`);
   }
 
   private gMapsRef: typeof google.maps | undefined = undefined;
@@ -149,6 +149,10 @@ export class CapacitorCustomGoogleMapsWeb
 
   dispatchMapEvent(_args: { id: string }): Promise<void> {
     throw new Error('Method not supported on web.');
+  }
+
+  checkMockLocation(_args: { id: string }): Promise<{ isMockLocation: boolean }> {
+    return Promise.resolve({ isMockLocation: false });
   }
 
   async enableCurrentLocation(_args: CurrentLocArgs): Promise<void> {

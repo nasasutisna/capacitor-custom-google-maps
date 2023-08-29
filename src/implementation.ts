@@ -137,6 +137,7 @@ export interface CapacitorCustomGoogleMapsPlugin extends Plugin {
   onScroll(args: OnScrollArgs): Promise<void>;
   dispatchMapEvent(args: { id: string; focus: boolean }): Promise<void>;
   getMapBounds(args: { id: string }): Promise<LatLngBounds>;
+  checkMockLocation(args: { id: string }): Promise<{ isMockLocation: boolean }>;
 }
 
 const CapacitorCustomGoogleMaps = registerPlugin<CapacitorCustomGoogleMapsPlugin>(

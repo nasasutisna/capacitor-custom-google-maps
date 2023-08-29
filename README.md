@@ -2,6 +2,7 @@
 
 capacitor custom plugin google maps 
 - add function for create circle on the maps (support for web, android and ios)
+- support hide my location button if the my location is true
 
 ## Install
 
@@ -34,6 +35,7 @@ npx cap sync
 * [`onScroll(...)`](#onscroll)
 * [`dispatchMapEvent(...)`](#dispatchmapevent)
 * [`getMapBounds(...)`](#getmapbounds)
+* [`checkMockLocation(...)`](#checkmocklocation)
 * [Interfaces](#interfaces)
 * [Enums](#enums)
 
@@ -304,6 +306,21 @@ getMapBounds(args: { id: string; }) => Promise<LatLngBounds>
 | **`args`** | <code>{ id: string; }</code> |
 
 **Returns:** <code>Promise&lt;<a href="#latlngbounds">LatLngBounds</a>&gt;</code>
+
+--------------------
+
+
+### checkMockLocation(...)
+
+```typescript
+checkMockLocation(args: { id: string; }) => Promise<{ isMockLocation: boolean; }>
+```
+
+| Param      | Type                         |
+| ---------- | ---------------------------- |
+| **`args`** | <code>{ id: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ isMockLocation: boolean; }&gt;</code>
 
 --------------------
 
