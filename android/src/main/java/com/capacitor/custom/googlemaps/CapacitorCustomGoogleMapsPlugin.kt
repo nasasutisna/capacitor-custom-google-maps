@@ -373,6 +373,26 @@ class CapacitorCustomGoogleMapsPlugin : Plugin() {
     }
 
     @PluginMethod
+    fun checkMockLocation(call: PluginCall) {
+        try {
+            val id = call.getString("id")
+            id ?: throw InvalidMapIdError()
+            val map = maps[id];
+            map ?: throw MapNotFoundError();
+            
+            map.checkMockLocation() { result ->
+                val res = JSObject()
+                res.put("isMockLocation", result)
+                call.resolve(res)
+            }
+        } catch (e: GoogleMapsError) {
+            handleError(call, e)
+        } catch (e: Exception) {
+            handleError(call, e)
+        }
+    }
+
+    @PluginMethod
     fun addCircle(call: PluginCall) {
         try {
             val id = call.getString("mapId")

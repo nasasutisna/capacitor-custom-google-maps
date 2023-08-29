@@ -42,6 +42,7 @@ export interface GoogleMapInterface {
   enableAccessibilityElements(enabled: boolean): Promise<void>;
   enableCurrentLocation(enabled: boolean): Promise<void>;
   setMyLocationButtonEnabled(enabled: boolean): Promise<void>; // android only
+  checkMockLocation(args: { id: string }): Promise<boolean>; // android only
   setPadding(padding: MapPadding): Promise<void>;
   setOnBoundsChangedListener(
     callback?: MapListenerCallback<CameraIdleCallbackData>,
@@ -263,10 +264,10 @@ export class GoogleMap {
    * @param options
    * @returns void
    */
-    async addCircle(options: CircleOptions): Promise<void> {
-      const res = await CapacitorCustomGoogleMaps.addCircle(options);
-      return res;
-    }
+  async addCircle(options: CircleOptions): Promise<void> {
+    const res = await CapacitorCustomGoogleMaps.addCircle(options);
+    return res;
+  }
 
   /**
    * Remove marker from the map
@@ -400,6 +401,15 @@ export class GoogleMap {
       id: this.id,
       enabled,
     });
+  }
+
+  /**
+   * checkMockLocation
+   *
+   * @returns boolean
+   */
+  async checkMockLocation(args: { id: string }): Promise<{ isMockLocation: boolean }> {
+    return CapacitorCustomGoogleMaps.checkMockLocation(args);
   }
 
   /**

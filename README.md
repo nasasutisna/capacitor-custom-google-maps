@@ -34,6 +34,7 @@ npx cap sync
 * [`onScroll(...)`](#onscroll)
 * [`dispatchMapEvent(...)`](#dispatchmapevent)
 * [`getMapBounds(...)`](#getmapbounds)
+* [`checkMockLocation(...)`](#checkmocklocation)
 * [Interfaces](#interfaces)
 * [Enums](#enums)
 
@@ -304,6 +305,21 @@ getMapBounds(args: { id: string; }) => Promise<LatLngBounds>
 | **`args`** | <code>{ id: string; }</code> |
 
 **Returns:** <code>Promise&lt;<a href="#latlngbounds">LatLngBounds</a>&gt;</code>
+
+--------------------
+
+
+### checkMockLocation(...)
+
+```typescript
+checkMockLocation(args: { id: string; }) => Promise<{ isMockLocation: boolean; }>
+```
+
+| Param      | Type                         |
+| ---------- | ---------------------------- |
+| **`args`** | <code>{ id: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ isMockLocation: boolean; }&gt;</code>
 
 --------------------
 

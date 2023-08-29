@@ -29,7 +29,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.InputStream
 import java.net.URL
-
+import android.content.Context;
+import android.location.LocationManager;
+import android.os.Build;
+import android.provider.Settings;
+import android.widget.Toast
 
 class CapacitorGoogleMap(
     val id: String,
@@ -58,6 +62,52 @@ class CapacitorGoogleMap(
         mapView = MapView(bridge.context, config.googleMapOptions)
         initMap()
         setListeners()
+    }
+
+    fun checkMockLocation(callback: (Boolean) -> Unit) {
+        try {
+            val bridge = delegate.bridge;
+            val isMockLocationOn = isMockLocationEnabled(bridge.context)
+
+            CoroutineScope(Dispatchers.Main).launch {
+                callback(isMockLocationOn)
+            }
+        } catch (e: GoogleMapsError) {
+            callback(false)
+        }
+    }
+
+    fun isMockLocationEnabled(context: Context): Boolean {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+
+            if((Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)) {
+                // Cek semua penyedia lokasi yang tersedia
+                for (provider in locationManager.allProviders) {
+                    val location: Location? = locationManager.getLastKnownLocation(provider)
+                    if (location != null && location.isMock) {
+                        return true
+                    }
+                }
+            } else {
+                // Cek semua penyedia lokasi yang tersedia
+                for (provider in locationManager.allProviders) {
+                    val location: Location? = locationManager.getLastKnownLocation(provider)
+                    if (location != null && location.isFromMockProvider) {
+                        return true
+                    }
+                }
+            }
+        } else {
+            // Sebelum Android 9 (API level 28), gunakan isFromMockProvider secara langsung
+            val location: Location? = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            if (location != null && location.isFromMockProvider) {
+                return true
+            }
+        }
+    
+        return false
     }
 
     private fun initMap() {
