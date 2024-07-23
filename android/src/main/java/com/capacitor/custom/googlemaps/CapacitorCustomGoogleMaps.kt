@@ -35,6 +35,10 @@ import android.os.Build;
 import android.provider.Settings;
 import android.widget.Toast
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
+
 class CapacitorGoogleMap(
     val id: String,
     val config: GoogleMapConfig,
@@ -78,12 +82,19 @@ class CapacitorGoogleMap(
     }
 
     fun isMockLocationEnabled(context: Context): Boolean {
-        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        // Check if the app has the necessary location permissions
+        val hasFineLocationPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val hasCoarseLocationPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        
+        if (!hasFineLocationPermission && !hasCoarseLocationPermission) {
+            return false
+        }
 
-            if((Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)) {
-                // Cek semua penyedia lokasi yang tersedia
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                // Check all available location providers
                 for (provider in locationManager.allProviders) {
                     val location: Location? = locationManager.getLastKnownLocation(provider)
                     if (location != null && location.isMock) {
@@ -91,7 +102,7 @@ class CapacitorGoogleMap(
                     }
                 }
             } else {
-                // Cek semua penyedia lokasi yang tersedia
+                // Check all available location providers
                 for (provider in locationManager.allProviders) {
                     val location: Location? = locationManager.getLastKnownLocation(provider)
                     if (location != null && location.isFromMockProvider) {
@@ -100,13 +111,13 @@ class CapacitorGoogleMap(
                 }
             }
         } else {
-            // Sebelum Android 9 (API level 28), gunakan isFromMockProvider secara langsung
+            // Before Android 9 (API level 28), use isFromMockProvider directly
             val location: Location? = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             if (location != null && location.isFromMockProvider) {
                 return true
             }
         }
-    
+
         return false
     }
 
