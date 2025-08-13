@@ -75,6 +75,10 @@ class CapacitorGoogleMapMarker(fromJSONObject: JSONObject): ClusterItem {
         return snippet
     }
 
+    override fun getZIndex(): Float? {
+        return null
+    }
+
     private fun buildIconAnchorPoint(iconAnchor: CapacitorGoogleMapsPoint): CapacitorGoogleMapsPoint? {
         iconSize ?: return null
 
