@@ -5,15 +5,15 @@ ext {
     androidxJunitVersion = project.hasProperty('androidxJunitVersion') ? rootProject.ext.androidxJunitVersion : '1.2.1'
     androidxEspressoCoreVersion = project.hasProperty('androidxEspressoCoreVersion') ? rootProject.ext.androidxEspressoCoreVersion : '3.6.1'
     androidxCoreKTXVersion = project.hasProperty('androidxCoreKTXVersion') ? rootProject.ext.androidxCoreKTXVersion : '1.13.1'
-    googleMapsPlayServicesVersion = project.hasProperty('googleMapsPlayServicesVersion') ? rootProject.ext.googleMapsPlayServicesVersion : '18.2.0'
-    googleMapsUtilsVersion = project.hasProperty('googleMapsUtilsVersion') ? rootProject.ext.googleMapsUtilsVersion : '3.8.2'
-    googleMapsKtxVersion = project.hasProperty('googleMapsKtxVersion') ? rootProject.ext.googleMapsKtxVersion : '5.0.0'
-    googleMapsUtilsKtxVersion = project.hasProperty('googleMapsUtilsKtxVersion') ? rootProject.ext.googleMapsUtilsKtxVersion : '5.0.0'
-    kotlinxCoroutinesVersion = project.hasProperty('kotlinxCoroutinesVersion') ? rootProject.ext.kotlinxCoroutinesVersion : '1.7.3'
+    googleMapsPlayServicesVersion = project.hasProperty('googleMapsPlayServicesVersion') ? rootProject.ext.googleMapsPlayServicesVersion : '18.0.2'
+    googleMapsUtilsVersion = project.hasProperty('googleMapsUtilsVersion') ? rootProject.ext.googleMapsUtilsVersion : '2.3.0'
+    googleMapsKtxVersion = project.hasProperty('googleMapsKtxVersion') ? rootProject.ext.googleMapsKtxVersion : '3.4.0'
+    googleMapsUtilsKtxVersion = project.hasProperty('googleMapsUtilsKtxVersion') ? rootProject.ext.googleMapsUtilsKtxVersion : '3.4.0'
+    kotlinxCoroutinesVersion = project.hasProperty('kotlinxCoroutinesVersion') ? rootProject.ext.kotlinxCoroutinesVersion : '1.7.1'
 }
 
 buildscript {
-    ext.kotlin_version = project.hasProperty("kotlin_version") ? rootProject.ext.kotlin_version : '1.9.25'
+    ext.kotlin_version = project.hasProperty("kotlin_version") ? rootProject.ext.kotlin_version : '1.9.20'
     repositories {
         google()
         mavenCentral()
@@ -22,7 +22,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.2'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         if (System.getenv("CAP_PLUGIN_PUBLISH") == "true") {
             classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
@@ -40,10 +40,10 @@ if (System.getenv("CAP_PLUGIN_PUBLISH") == "true") {
 
 android {
     namespace "com.capacitor.custom.googlemaps"
-    compileSdk project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 35
+    compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 34
     defaultConfig {
-        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 23
-        targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 35
+        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 22
+        targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -58,8 +58,8 @@ android {
         abortOnError false
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     dependencies {
@@ -82,7 +82,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation "androidx.core:core-ktx:$androidxCoreKTXVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation "com.google.maps.android:maps-ktx:$googleMapsKtxVersion"
     implementation "com.google.maps.android:maps-utils-ktx:$googleMapsUtilsKtxVersion"
